@@ -1,0 +1,13 @@
+---
+- name: Create Prefixes within NetBox
+  netbox.netbox.netbox_prefix:
+#    netbox_url: "{{ lookup('ansible.builtin.env', 'api_endpoint') }}"
+    netbox_url: http://192.168.174.157:8000
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+ #   netbox_token: "{{ lookup('ansible.builtin.env', 'token') }}"
+    data: "{{ prefix }}"
+    first_available: yes
+  loop: "{{ prefixes }}"
+  loop_control: 
+    loop_var: prefix
+    label: "{{ prefix['description']}}"

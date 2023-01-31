@@ -1,0 +1,11 @@
+---
+- name: Create VLANs
+  netbox.netbox.netbox_vlan:
+    netbox_url: http://192.168.174.157:8000
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data: "{{ vlan }}"
+    state: present    
+  loop: "{{ vlans }}"
+  loop_control: 
+    loop_var: vlan
+    label: "{{ vlan['name']}}"

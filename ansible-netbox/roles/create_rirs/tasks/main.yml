@@ -1,0 +1,11 @@
+---
+- name: Create RIRs
+  netbox.netbox.netbox_rir:
+    netbox_url: http://192.168.174.157:8000
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data: "{{ rir }}"        
+    state: present
+  loop: "{{ ipam_rirs }}"
+  loop_control: 
+    loop_var: rir
+    label: "{{ rir['name']}}"

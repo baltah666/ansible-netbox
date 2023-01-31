@@ -1,0 +1,6 @@
+---
+vlan_groups:
+
+  - name: HM_VLANS
+    scope_type: dcim.site
+    scope: sana

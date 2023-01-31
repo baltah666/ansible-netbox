@@ -1,0 +1,16 @@
+- name: "Test NetBox modules"
+  connection: local
+  hosts: localhost
+  gather_facts: False
+
+  tasks:
+    - name: Delete device within NetBox with only required information
+      netbox_device:
+        netbox_url: http://192.168.174.157:8000
+        netbox_token: 0123456789abcdef0123456789abcdef01234567
+        data:
+          name: Test Device
+          device_type:  C9200-48P
+          device_role:  AccessSW
+          site: Sana
+        state: absent

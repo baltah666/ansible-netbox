@@ -1,0 +1,11 @@
+---
+- name: Create SuperNets within NetBox
+  netbox.netbox.netbox_prefix:
+    netbox_url: http://192.168.174.157:8000
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data: "{{ supernet_prefix }}"
+    state: present
+  loop: "{{ supernet_prefixes }}"
+  loop_control: 
+    loop_var: supernet_prefix
+    label: "{{ supernet_prefix['prefix']}}"
